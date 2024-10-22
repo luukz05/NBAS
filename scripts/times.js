@@ -40,8 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         playerItem.className = 'player-item';
                         playerItem.innerHTML = `
                             <h5>${player.FirstName} ${player.LastName}</h5>
-                            <p>${player.Jersey}</p>
-                            <p>${player.Position}</p>
                         `;
                         const normalizedPrimaryColor = primaryColor.toUpperCase().replace('#', '');
                         // Adiciona os eventos de hover para mudar a cor ao passar o mouse

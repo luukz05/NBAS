@@ -1,0 +1,76 @@
+/* Estilo global */
+body {
+    font-family: sans-serif;
+    background-color: #f3f4f6; /* Fundo claro */
+    margin: 0;
+    padding: 0;
+    color: #ffffff; /* Texto escuro */
+    background-image: url('https://i.redd.it/m6up7z4yphh31.jpg');
+    background-repeat: no-repeat;
+background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Container principal */
+#playerInfo {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #535353e0; /* Fundo branco para o card */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+h2 {
+    font-size: 24px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+/* Imagem do jogador */
+#playerInfo img {
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 8px;
+}
+
+/* Parágrafos */
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+/* Links */
+a {
+    color: #00a2ffcb; /* Azul NBA */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Mensagens de erro */
+.error-message {
+    color: #d9534f; /* Vermelho */
+    font-weight: bold;
+}
+
+/* Estilo de responsividade */
+@media (max-width: 600px) {
+    #playerInfo {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}

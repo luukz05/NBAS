@@ -31,7 +31,6 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
     transition: 1s;
 }
 .team-item:hover {
@@ -66,11 +65,10 @@ body {
     background: rgba(255, 255, 255, 0.1); /* Cor de fundo semi-transparente */
     border-radius: 4px; /* Arredondar os cantos */
     padding: 5px;
-    font-size: 12px; /* Tamanho da fonte */
+    font-size: 13px; /* Tamanho da fonte */
     display: flex;
     align-items: center;
-    gap: 5px;
-    text-align: justify;
+    justify-content: center;
 }
 
 .title{
