@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placar da NBA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f3f3f3;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .game {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .team {
+            display: flex;
+            justify-content: space-between;
+        }
+        .team-name {
+            font-weight: bold;
+        }
+        .score {
+            font-size: 1.5em;
+        }
+        .loading {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Placar da NBA</h1>
+    <div id="scores"></div>
+    <div class="loading" id="loading">Carregando...</div>
+
+    <script>
+        const scoresDiv = document.getElementById('scores');
+        const loadingDiv = document.getElementById('loading');
+
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}${month}${day}`;
+        }
+
+        async function fetchNBAScores() {
+            const today = new Date();
+            const gameDate = formatDate(today);
+            const url = `https://tank01-fantasy-stats.p.rapidapi.com/getNBAScoresOnly?gameDate=${gameDate}&topPerformers=true&lineups=true`;
+            const options = {
+                method: 'GET',
+                headers: {
+                    'x-rapidapi-host': 'tank01-fantasy-stats.p.rapidapi.com',
+                    'x-rapidapi-key': '29bc1b8e77mshbb549f1b4fa1ff7p1b822fjsn6c7e8b83dbca'
+                }
+            };
+
+            try {
+                const response = await fetch(url, options);
+                const data = await response.json();
+                loadingDiv.style.display = 'none';
+                displayScores(data.body);
+                fetchNBASchedule(); // Chama a função para buscar a programação do dia seguinte
+            } catch (error) {
+                scoresDiv.innerHTML = '<p>Erro ao carregar os dados. Tente novamente mais tarde.</p>';
+                console.error('Erro:', error);
+            }
+        }
+
+        async function fetchNBASchedule() {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1); // Adiciona um dia
+            const gameDate = formatDate(tomorrow);
+            const url = `https://tank01-fantasy-stats.p.rapidapi.com/getNBAGamesForDate?gameDate=${gameDate}`;
+            const options = {
+                method: 'GET',
+                headers: {
+                    'x-rapidapi-host': 'tank01-fantasy-stats.p.rapidapi.com',
+                    'x-rapidapi-key': '29bc1b8e77mshbb549f1b4fa1ff7p1b822fjsn6c7e8b83dbca'
+                }
+            };
+
+            try {
+                const response = await fetch(url, options);
+                const data = await response.json();
+                // Aqui você pode processar e exibir a programação conforme necessário
+                console.log('Programação do dia seguinte:', data); // Exibe no console por enquanto
+            } catch (error) {
+                console.error('Erro ao carregar a programação:', error);
+            }
+        }
+
+        function displayScores(games) {
+            if (!games || Object.keys(games).length === 0) {
+                scoresDiv.innerHTML = '<p>Nenhum jogo encontrado para esta data.</p>';
+                return;
+            }
+
+            for (const gameID in games) {
+                const game = games[gameID];
+                const gameDiv = document.createElement('div');
+                gameDiv.classList.add('game');
+
+                const homeTeam = game.home || 'Desconhecido';
+                const awayTeam = game.away || 'Desconhecido';
+                const homePts = game.homePts || 'Ainda não começou';
+                const awayPts = game.awayPts || 'Ainda não começou';
+                const status = game.gameStatus || 'Desconhecido';
+
+                gameDiv.innerHTML = `
+                    <div class="team">
+                        <span class="team-name">${awayTeam}</span>
+                        <span class="score">${awayPts}</span>
+                    </div>
+                    <div class="team">
+                        <span class="team-name">${homeTeam}</span>
+                        <span class="score">${homePts}</span>
+                    </div>
+                    <div class="team">
+                        <span class="team-name" style="flex-grow: 1;">Status: ${status}</span>
+                    </div>
+                `;
+                scoresDiv.appendChild(gameDiv);
+            }
+        }
+
+        fetchNBAScores();
+        // Adicione uma atualização automática se necessário
+        // setInterval(fetchNBAScores, 60000); // Atualiza a cada 60 segundos
+    </script>
+</body>
+</html>

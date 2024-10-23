@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     // Define a cor primária do time
                     const primaryColor = `#${team.PrimaryColor}` || '#333'; // Padrão caso não exista
+                    const secondaryColor = `#${team.SecondaryColor}`
+                    const tertiaryColor = `#${team.TertiaryColor}`
 
                     players.forEach(player => {
                         const playerItem = document.createElement('a');
@@ -42,6 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             <h5>${player.FirstName} ${player.LastName}</h5>
                         `;
                         const normalizedPrimaryColor = primaryColor.toUpperCase().replace('#', '');
+                        const normalizedSecondaryColor = secondaryColor.toUpperCase().replace('#', '');
+                        const normalizedTertiaryColor = tertiaryColor.toUpperCase().replace('#', '');
                         // Adiciona os eventos de hover para mudar a cor ao passar o mouse
                         playerItem.addEventListener('mouseover', function() {
                             playerItem.style.cursor = 'pointer';
@@ -52,11 +56,31 @@ document.addEventListener('DOMContentLoaded', function() {
                                 
                             } else {
                                 playerItem.style.backgroundColor = `#${normalizedPrimaryColor}`;
-                                
                                 playerItem.style.transition = '0.5s';
                             }
                             
                         });
+                        teamItem.addEventListener('mouseover', function() {
+                            teamItem.style.cursor = 'pointer';
+                        
+                            // Adiciona opacidade ao gradiente
+                            const primaryColorWithOpacity = `${normalizedPrimaryColor}99`; // 60% de opacidade
+                            const secondaryColorWithOpacity = `${normalizedSecondaryColor}99`; // 60% de opacidade
+                        
+                            teamItem.style.backgroundImage = `linear-gradient(#${primaryColorWithOpacity}, #${secondaryColorWithOpacity})`;
+                            teamItem.style.color = '#fffff'; // Texto preto
+                            teamItem.style.transition = 'background-image 1s ease-in, color 1s ease-in'; // Transição suave
+                        });
+                        
+                        teamItem.addEventListener('mouseleave', function() {
+                            teamItem.style.cursor = 'pointer';
+                            teamItem.style.backgroundImage = ''; // Remove o gradiente
+                            teamItem.style.backgroundColor = '#575757d8'; // Cor padrão de fundo
+                            teamItem.style.color = '#fffff'; // Texto preto
+                            teamItem.style.transition = 'background-color 1s ease-in, color 1s ease-in'; // Transição suave
+                        });
+                        
+                        
                       // Adiciona evento de clique ao nome do jogador
                       playerItem.addEventListener('click', function() {
                         // Redireciona para a página Jogadores.html passando as informações do jogador pela URL
