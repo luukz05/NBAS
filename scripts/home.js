@@ -61,7 +61,7 @@ function displayScores(games) {
     return;
   }
 
-  fetch(`/scripts/times.json`)
+  fetch(`../scripts/times.json`)
     .then((response) => response.json())
     .then((data) => {
       const teamsLogos = {};
@@ -87,11 +87,9 @@ function displayScores(games) {
         let statusColor; // Declare a variável para a cor do status
 
         if (status === "Aguardando Início") {
-          statusColor = "white"; // Cor branca para "Aguardando Início"
+          statusColor = "#FFFF"; // Cor branca para "Aguardando Início"
         } else if (status === "Live") {
           statusColor = "red"; // Cor vermelha para "Live"
-        } else {
-          statusColor = "inherit"; // Cor padrão para outros status
         }
 
         gameDiv.innerHTML = `

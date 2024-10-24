@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   teamsList.innerHTML = "<p>Carregando times...</p>";
 
   // Fazendo a requisição para obter os times
-  fetch(`/scripts/times.json`)
+  fetch(`../scripts/times.json`)
     .then((response) => response.json())
     .then((data) => {
       teamsList.innerHTML = "";
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 `;
 
           // Chama a API de jogadores
-          fetch(`/scripts/roster.json`)
+          fetch(`../scripts/roster.json`)
             .then((response) => response.json())
             .then((data) => {
               // Acessa os jogadores pelo código do time
@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   playerItem.className = "player-item";
                   playerItem.innerHTML = `
                                 <h5>${player.FirstName} ${player.LastName}</h5>
+                                <h5>${player.Position}</h5>
                             `;
                   const normalizedPrimaryColor = primaryColor
                     .toUpperCase()
