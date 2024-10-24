@@ -1,0 +1,93 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url(https://www.pixelstalk.net/wp-content/uploads/images6/NBA-HD-Wallpaper-Computer.jpg);
+  color: #eee;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: black;
+  background-attachment: fixed;
+  margin: 0;
+  text-align: center;
+}
+
+.teams-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px; 
+  justify-content: center;
+  align-items: center;
+}
+
+.team-item {
+  background: #575757d8;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 425px;
+  height: auto;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  transition: 1s;
+}
+.team-item:hover {
+  transition: 1s;
+  box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.75);
+  background: #6e6e6ed8;
+  scale: 1.05;
+}
+
+.team-item p {
+  margin: 10px 0;
+}
+
+.team-logo {
+  height: 250px;
+  width: 250px;
+}
+
+.players-list {
+  background-color: #444444c0;
+  border-radius: 8px;
+  padding: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(100px, 1fr)
+  );
+  gap: 5px;
+}
+
+.player-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar{
+  background-color: #333;
+  height: 7.75vh;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1;
+}
+
+a, a:visited{
+  color: #bbb;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
