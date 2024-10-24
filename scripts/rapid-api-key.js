@@ -1,2 +1,2 @@
-const apiKey = `29bc1b8e77mshbb549f1b4fa1ff7p1b822fjsn6c7e8b83dbca`;
+const apiKey = `36401f18c1mshbe63e7a864a0c0cp171490jsn90e42c6bf31e`;
 export default apiKey;

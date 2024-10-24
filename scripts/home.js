@@ -87,9 +87,9 @@ function displayScores(games) {
         let statusColor; // Declare a variável para a cor do status
 
         if (status === "Aguardando Início") {
-          statusColor = "#FFFF"; // Cor branca para "Aguardando Início"
+          statusColor = "#ffffff"; // Cor branca para "Aguardando Início"
         } else if (status === "Live") {
-          statusColor = "red"; // Cor vermelha para "Live"
+          statusColor = "#ff0000"; // Cor vermelha para "Live"
         }
 
         gameDiv.innerHTML = `
