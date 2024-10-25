@@ -88,7 +88,7 @@ function displayScores(games) {
 
         if (status === "Aguardando Início") {
           statusColor = "#ffffff"; // Cor branca para "Aguardando Início"
-        } else if (status === "Live") {
+        } else if (status === "Live - In Progress") {
           statusColor = "#ff0000"; // Cor vermelha para "Live"
         }
 
@@ -108,7 +108,7 @@ function displayScores(games) {
             </div>
         </div>
         <div class="status-container">
-            <span style="color: ${statusColor};">${status}</span> <!-- Corrigido para fechar a aspa -->
+            <span style="color: ${statusColor};font-weight:bold;">${status}</span> <!-- Corrigido para fechar a aspa -->
         </div>
     </div>
 `;

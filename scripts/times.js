@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   playerItem.className = "player-item";
                   playerItem.innerHTML = `
                                 <h5>${player.FirstName} ${player.LastName}</h5>
-                                <h5>${player.Position}</h5>
+                                
                             `;
                   const normalizedPrimaryColor = primaryColor
                     .toUpperCase()

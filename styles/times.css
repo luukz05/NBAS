@@ -9,6 +9,11 @@ body {
   background-attachment: fixed;
   margin: 0;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Lato", sans-serif;
 }
 
 .teams-list {
@@ -78,8 +83,8 @@ body {
   position: sticky;
   top: 0;
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-evenly;
   z-index: 1;
   margin-bottom: 20px;
 }
